@@ -1,0 +1,17 @@
+alias printpath='echo $PATH | tr -s ":" "\n"'
+
+# ls
+alias ls="ls --color=auto"
+alias ll='ls -l'
+alias la='ls -alh'
+
+# git-foresta
+alias gifo='$HOME/git-foresta --style=10 "$@" | less -RSX'
+alias gifa='$HOME/git-foresta --all --style=10 "$@" | less -RSX'
+
+# trans
+alias enzh='$HOME/trans -show-original-phonetics Y -speak en:zh-tw'
+alias zhen='$HOME/trans -play zh:en -b'
+
+alias activate='source $VIRTUAL_ENV/bin/activate'
+alias cdr='cd $HOME; source $HOME/.zshrc'

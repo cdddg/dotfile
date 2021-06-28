@@ -1,0 +1,15 @@
+# color area 		fgcolor bgcolor [attributes]
+color cursor 		default color8 bold
+
+set main-view-author-display = email-user
+set main-view-commit-title-graph = v2
+set main-view-date-format = "%Y-%m-%d %H:%M"
+set main-view-date-local = yes
+set line-graphics = utf-8
+# set main-view-line-number = yes,interval=5 text
+
+# use difftool to compare a commit in main/diff view with its parent
+# https://github.com/jonas/tig/issues/219#issuecomment-406817763
+bind main w !git difftool -d %(commit)^!
+bind diff w !git difftool -d %(commit)^!
+

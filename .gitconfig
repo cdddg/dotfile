@@ -1,0 +1,14 @@
+[user]
+	name = cdddg
+	email = cdddg2@gmail.com
+[core]
+	excludesfile = ~/.gitignore
+	editor = mvim
+[diff]
+	tool = vimdiff
+[color "status"]
+	added = green bold
+	changed = yellow bold
+	untracked = red bold
+[credential]
+	helper = store --file ~/.git_credentials
