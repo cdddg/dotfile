@@ -33,7 +33,7 @@ set termguicolors
 set wildmenu
 set backspace=indent,eol,start  " 設定 delete刪除鍵
 set colorcolumn=80
-set scrolloff=1                 " 距離頂部和底部5
+set scrolloff=1                 " 距離頂部和底部的行數
 " set cursorline
 " set cursorcolumn
 
@@ -85,12 +85,13 @@ nmap  zr          zR
 " nmap  N           Nzzzv
 " nmap  n           nzzzv
 
+vmap  *           m`:keepjumps normal! *``<CR>
 vmap  <Leader>s   :update<CR>:edit<CR>
-vmap  J           :m '>+1<CR>gv
-vmap  K           :m '<-2<CR>gv
 vmap  <S-Tab>     <gv
 vmap  <Tab>       >gv
-vmap  *           m`:keepjumps normal! *``<CR>
+vmap  J           :m '>+1<CR>gv
+vmap  K           :m '<-2<CR>gv
+vmap  Y           "+ygv<Esc>
 
 " language
 "   └──── python
@@ -137,6 +138,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'bps/vim-textobj-python'
   Plug 'kana/vim-textobj-user'
   Plug 'jmcantrell/vim-virtualenv'
+  Plug 'thinca/vim-localrc'
   " Plug 'pseewald/vim-anyfold'
   " Plug 'skammer/vim-css-color'
 call plug#end()
