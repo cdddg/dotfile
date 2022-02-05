@@ -56,7 +56,6 @@ au CmdlineEnter * redraws
 " keys
 "   :'<,'>%!column -t
 "   :'<,'>%!sort -f -k2
-nmap  *           m`:keepjumps normal! *``<CR>
 nmap  <Down>      <Nop>
 nmap  <Leader>s   :update<CR>:edit<CR>
 nmap  <Left>      <Nop>
@@ -82,10 +81,11 @@ nmap  L           $
 nmap  U           <C-R>
 nmap  zm          zM
 nmap  zr          zR
+" nmap  *           m`:keepjumps normal! *``<CR>
 " nmap  N           Nzzzv
 " nmap  n           nzzzv
 
-vmap  *           m`:keepjumps normal! *``<CR>
+vmap  /           y/\V<C-R>=escape(@",'/\')<CR><CR>N
 vmap  <Leader>s   :update<CR>:edit<CR>
 vmap  <S-Tab>     <gv
 vmap  <Tab>       >gv
@@ -139,8 +139,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'kana/vim-textobj-user'
   Plug 'jmcantrell/vim-virtualenv'
   Plug 'thinca/vim-localrc'
-  " Plug 'pseewald/vim-anyfold'
-  " Plug 'skammer/vim-css-color'
 call plug#end()
 
 " colorscheme

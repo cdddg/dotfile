@@ -7,17 +7,16 @@ help: ## Show help message.
 	@printf "  make $(BLUE)<target>$(NC)\n\n"
 	@printf "Targets:\n"
 	@perl -nle'print $& if m{^[a-zA-Z0-9_-]+:.*?## .*$$}' $(MAKEFILE_LIST) | \
-		sort -f -k4 | \
-		awk 'BEGIN {FS = ":.*?## "}; \
-		{printf "$(BLUE)  %-18s$(NC) %s\n", $$1, $$2}'
+		sort -f -k1,1 -k2,2 | \
+		awk 'BEGIN {FS = ":.*?## "}; {printf "$(BLUE)  %-18s$(NC) %s\n", $$1, $$2}'
 
-all: install dotfiles  ## run install & dotfiles
+all: install dotfiles  ## install & dotfiles
 
-install: P_INSTALL_ALL  ## install package
+install: P_INSTALL_ALL  ## install packages
 
 dotfiles:  ## copy dotfiles
 	mkdir -p $$HOME/.vim/
-	cp ./{.zshrc,.aliases,.vimrc,.tigrc} $$HOME
+	cp ./{.zshrc,.aliases,.vimrc,.tigrc,.lazygit,.gitconfig} $$HOME
 	cp -ar .vim/* $$HOME/.vim/
 
 # -----------------------------------------------------------------------------
@@ -51,57 +50,60 @@ P_INSTALL_ALL: \
 	homebrew \
 	dependencies \
 	vim-plug \
-	git tig \
+	git tig lazygit \
 	zsh zinit \
 	macvim vscode docker fork font-fira-code translate \
 	python \
 
 # -----------------------------------------------------------------------------
 
-homebrew: P_INSTALL_HOMEBREW P_SETTING_HOMEBREW  ## 
+homebrew: P_INSTALL_HOMEBREW P_SETTING_HOMEBREW
 
-vim-plug:  ## 
+vim-plug:
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-git:  ## 
+git:
 	brew install git
 
-tig:  ## 
+tig:
 	brew install tig
 
-zsh:  ## 
+lazygit:
+	brew install lazygit
+
+zsh:
 	brew install zsh
 	cat /etc/shells   # show shell list,  system default is bash
 	chsh -s /bin/zsh  # set to defalut
 
-zinit: ## 
+zinit:
 	rm -rf $$HOME/.zinit/
 	git clone https://github.com/zdharma-continuum/zinit.git $$HOME/.zinit/
 
-macvim:  ## 
+macvim:
 	brew install --cask --force macvim
 
-vscode:  ##
+vscode:
 	brew install --cask --force visual-studio-code
 
-docker:  ## 
+docker:
 	brew install --cask --force docker
 
-fork:  ## 
+fork:
 	brew install --cask --force fork
 
-font-fira-code:  ## 
+font-fira-code:
 	brew tap homebrew/cask-fonts
 	brew install --cask --force font-fira-code
 	brew install --cask --force font-fira-code-nerd-font
 
-translate:  ##
+translate:
 	wget -O $$HOME/trans git.io/trans; chmod +x $$HOME/trans
 	brew install gawk
 
-python: P_INSTALL_PYENV P_INSTALL_PYTHONS P_UPGRADE_PIP  ## 
+python: P_INSTALL_PYENV P_INSTALL_PYTHONS P_UPGRADE_PIP
 
-dependencies:  ## 
+dependencies:
 	# [coc-nvim]
 		brew install openssl
 		brew install node

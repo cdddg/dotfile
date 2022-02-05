@@ -1,15 +1,15 @@
 source ~/.zinit/zinit.zsh
 
 
-# 快速目录跳转
+# 快速目錄跳轉
 zinit ice lucid wait='1'
 zinit light skywind3000/z.lua
 
-# 语法高亮
+# 語法高亮
 zinit ice lucid wait='0' atinit='zpcompinit'
 zinit light zdharma-continuum/fast-syntax-highlighting
 
-# 自动建议
+# 自動建議
 zinit ice lucid wait="0" atload='_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
 
