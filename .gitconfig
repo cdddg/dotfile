@@ -4,6 +4,9 @@
 [core]
 	excludesfile = ~/.gitignore
 	editor = mvim
+	pager = diffr | less -R
+[interactive]
+	diffFilter = diffr
 [diff]
 	tool = mvimdiff
 [color "status"]

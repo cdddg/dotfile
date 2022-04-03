@@ -29,4 +29,4 @@ function! ToggleNerdTree()
 endfunction
 
 au BufEnter * call SyncTree()
-nmap  <Space>\  :call ToggleNerdTree()<CR>
+nmap  <Leader>\  :call ToggleNerdTree()<CR>

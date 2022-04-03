@@ -75,8 +75,8 @@ nmap  d#          ?\<<C-r>=expand('<cword>')<CR>\>\C<CR>``dgN
 nmap  d*          /\<<C-r>=expand('<cword>')<CR>\>\C<CR>``dgn
 nmap  gx          viW"ay:!open <C-R>a &<CR>
 nmap  H           ^
-nmap  J           ]m
-nmap  K           [m
+nmap  J           <C-f>zz
+nmap  K           <C-b>zz
 nmap  L           $
 nmap  U           <C-R>
 nmap  zm          zM

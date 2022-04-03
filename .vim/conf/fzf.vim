@@ -38,11 +38,11 @@ command! -bang -nargs=* Rg
   \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 
 
-nmap <silent> <C-f>     :Files<CR>
+nmap <silent> <Leader>F :Files<CR>
 nmap <silent> <Leader>f :Rg<CR>
 nmap <silent> <Leader>b :Buffers<CR>
 nmap <silent> <Leader>w :Windows<CR>
 nmap <silent> <Leader>' :FZFMarks<CR>
 nmap <silent> <Leader>l :FZFBLines<CR>
-nmap <silent> <Leader>H :Helptags<CR>
-nmap <silent> <Leader>h :History<CR>
+" nmap <silent> <Leader>H :Helptags<CR>
+" nmap <silent> <Leader>h :History<CR>

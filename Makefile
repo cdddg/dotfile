@@ -10,11 +10,11 @@ help: ## Show help message.
 		sort -f -k1,1 -k2,2 | \
 		awk 'BEGIN {FS = ":.*?## "}; {printf "$(BLUE)  %-18s$(NC) %s\n", $$1, $$2}'
 
-all: install dotfiles  ## install & dotfiles
+all: install dots  ## install & dots
 
 install: P_INSTALL_ALL  ## install packages
 
-dotfiles:  ## copy dotfiles
+dots:  ## copy dots
 	mkdir -p $$HOME/.vim/
 	cp ./{.zshrc,.aliases,.vimrc,.tigrc,.lazygit,.gitconfig} $$HOME
 	cp -ar .vim/* $$HOME/.vim/
@@ -120,3 +120,4 @@ dependencies:
 		brew install wget
 		brew install zlib
 		brew install bat
+		brew install diffr

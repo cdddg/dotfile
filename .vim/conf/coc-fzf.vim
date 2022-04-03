@@ -2,19 +2,15 @@ let g:coc_fzf_opts = ['--layout=reverse']
 " allow to scroll in the preview
 set mouse=a
 " mappings
-nmap <silent> <space><space> :<C-u>CocFzfList<CR>
-nmap <silent> <space>a       :<C-u>CocFzfList diagnostics<CR>
-nmap <silent> <space>b       :<C-u>CocFzfList diagnostics --current-buf<CR>
-nmap <silent> <space>c       :<C-u>CocFzfList commands<CR>
-nmap <silent> <space>e       :<C-u>CocFzfList extensions<CR>
+nmap <silent> <Leader>Coc      :<C-u>CocFzfList<CR>
+nmap <silent> <Leader>caa      :<C-u>CocFzfList diagnostics<CR>
+nmap <silent> <Leader>cab      :<C-u>CocFzfList diagnostics --current-buf<CR>
+nmap <silent> <Leader>cc       :<C-u>CocFzfList commands<CR>
+" nmap <silent> <space>e       :<C-u>CocFzfList extensions<CR>
 " nmap <silent> <space>l       :<C-u>CocFzfList location<CR>
-nmap <silent> <space>o       :<C-u>CocFzfList outline<CR>
-nmap <silent> <space>s       :<C-u>CocFzfList symbols<CR>
-nmap <silent> <space>p       :<C-u>CocFzfListResume<CR>
-  
-if !empty($PYENV_VIRTUAL_ENV)
-  call coc#config('python', {'pythonPath': $PYENV_VIRTUAL_ENV . '~/.pyenv/shims/python'})
-endif
+nmap <silent> <Leader>co       :<C-u>CocFzfList outline<CR>
+" nmap <silent> <space>s       :<C-u>CocFzfList symbols<CR>
+" nmap <silent> <space>p       :<C-u>CocFzfListResume<CR>
 
 nmap <leader>gd :Gvdiffsplit!<CR>
 nmap <leader>dh :diffget //2<CR>

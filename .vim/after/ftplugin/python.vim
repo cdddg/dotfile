@@ -24,3 +24,4 @@ function! CustomFoldText()
 endfunction
 
 set foldtext=CustomFoldText()
+imap PP  from pprint import pprint
