@@ -34,6 +34,14 @@ zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit ice from"gh-r" as"program"
 zinit load junegunn/fzf-bin
 
+# pyenv
+export PATH="/Users/me/.pyenv/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init --path)"
+fi
+
 zinit light MichaelAquilina/zsh-autoswitch-virtualenv
 zinit light Aloxaf/fzf-tab
 
@@ -62,14 +70,6 @@ PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
     zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
     # switch group using `,` and `.`
     zstyle ':fzf-tab:*' switch-group ',' '.'
-
-# pyenv
-export PATH="/Users/me/.pyenv/bin:$PATH"
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init --path)"
-fi
 
 # mysql-connector-c
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"

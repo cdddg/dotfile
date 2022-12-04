@@ -1,7 +1,10 @@
 {
   "diagnostic.errorSign": "XX",
-  "diagnostic.warningSign": "!!",
   "diagnostic.hintSign": "??",
+  "diagnostic.warningSign": "!!",
   "pyright.enable": true,
-  "python.linting.enabled": true
+  "pyright.inlayHints.functionReturnTypes": true,
+  "pyright.inlayHints.variableTypes": true,
+  "python.linting.enabled": true,
+  "suggest.noselect": true
 }

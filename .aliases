@@ -12,5 +12,8 @@ alias tiga='tig --all'
 alias enzh='$HOME/trans -show-original-phonetics Y -speak en:zh-tw'
 alias zhen='$HOME/trans -play zh:en -b'
 
+# pre-commit
+alias pre-push='pre-commit run --hook-stage push'
+
 alias actv='source $VIRTUAL_ENV/bin/activate'
 alias cdr='cd $HOME; source $HOME/.zshrc'

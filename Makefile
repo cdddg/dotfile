@@ -42,8 +42,9 @@ P_INSTALL_PYTHONS:
 
 P_UPGRADE_PIP:
 	for ver in $(shell ls $$HOME/.pyenv/versions); do \
-		$$HOME/.pyenv/versions/$$ver/bin/python -m pip install virtualenv &\
-		$$HOME/.pyenv/versions/$$ver/bin/python -m pip install --upgrade pip; \
+		$$HOME/.pyenv/versions/$$ver/bin/python -m pip install --upgrade pip & \
+		$$HOME/.pyenv/versions/$$ver/bin/python -m pip install --upgrade poetry & \
+		$$HOME/.pyenv/versions/$$ver/bin/python -m pip install --upgrade virtualenv ;\
 		done
 
 P_INSTALL_ALL: \
