@@ -61,7 +61,7 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
-" nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
 " xmap <leader>f  <Plug>(coc-format-selected)
@@ -120,3 +120,4 @@ if !empty($PYENV_VIRTUAL_ENV)
   call coc#config('python', {'pythonPath': $PYENV_VIRTUAL_ENV . '~/.pyenv/shims/python'})
 endif
 
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"

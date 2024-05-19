@@ -1,34 +1,36 @@
-source ~/.zinit/zinit.zsh
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    printf "Installing Zinit Plugin Manager (zdharma-continuum/zinit)…\n"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" --depth=1 && \
+        printf "Installation successful.\n" || \
+        printf "The clone has failed.\n"
+fi
 
 
-# 快速目錄跳轉
 zinit ice lucid wait='1'
 zinit light skywind3000/z.lua
 
-# 語法高亮
 zinit ice lucid wait='0' atinit='zpcompinit'
 zinit light zdharma-continuum/fast-syntax-highlighting
 
-# 自動建議
 zinit ice lucid wait="0" atload='_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
 
-# 自動補全
 zinit ice lucid wait='0'
 zinit light zsh-users/zsh-completions
 
-# 加载 OMZ 框架及部分插件
 zinit snippet OMZ::lib/completion.zsh
 zinit snippet OMZ::lib/history.zsh
 zinit snippet OMZ::lib/key-bindings.zsh
 zinit snippet OMZ::lib/theme-and-appearance.zsh
 zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
-zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
-
-zinit ice svn
 zinit snippet OMZ::plugins/extract
-
-zinit ice lucid wait='1'
+zinit snippet OMZ::lib/git.zsh
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 
 zinit ice from"gh-r" as"program"
@@ -42,7 +44,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path)"
 fi
 
-zinit light MichaelAquilina/zsh-autoswitch-virtualenv
+zinit wait lucid for MichaelAquilina/zsh-autoswitch-virtualenv
 zinit light Aloxaf/fzf-tab
 
 # pure theme
@@ -83,5 +85,13 @@ export BAT_THEME="base16"
 # alias
 [[ -f ~/.aliases ]] && source ~/.aliases
 
-# onedegree
-[[ -f ~/.onedegree/.zshrc ]] && source ~/.onedegree/.zshrc
+
+function tmuxa {
+    if tmux has-session -t 0 2>/dev/null; then
+        echo "Attaching to session 0."
+        tmux attach -t 0
+    else
+        echo "No session 0 found. Starting a new tmux session."
+        tmux
+    fi
+}

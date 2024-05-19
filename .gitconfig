@@ -1,19 +1,29 @@
-; [user]
-; 	name = cdddg
-; 	email = cdddg2@gmail.com
+[user]
+	name = Will Lin
+	email = cdddg2@gmail.com
 [core]
 	excludesfile = ~/.gitignore
-	editor = mvim
-	pager = diffr | less -R
-[interactive]
-	diffFilter = diffr
-[diff]
-	tool = mvimdiff
+  whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	editor = nvim
+[rerere]
+	enabled = 1
+	autoupdate = 1
+[color]
+	ui = auto
+[color "branch"]
+	current = yellow bold
+	local = green bold
+	remote = cyan bold
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
 [color "status"]
 	added = green bold
 	changed = yellow bold
 	untracked = red bold
-[credential]
-	helper = store --file ~/.git_credentials
 [alias]
   gone = ! "git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
+  sync = ! "hub sync"

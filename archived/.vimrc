@@ -2,7 +2,7 @@
 " ┆ Deprecate vi    ┆
 " ╰-----------------╯
 set nocompatible                " 不兼容VI
-
+set autoread
 
 " ╭-----------------╮
 " ┆ Encoding        ┆
@@ -115,39 +115,39 @@ au OptionSet number :if v:option_new | set showbreak= | else | set showbreak=↪
 " ╰-----------------╯
 "   :'<,'>%!column -t
 "   :'<,'>%!sort -f -k2
+nmap  <Up>        <Nop>
 nmap  <Down>      <Nop>
-nmap  <Leader>s   :update<CR>:edit<CR>
 nmap  <Left>      <Nop>
 nmap  <Right>     <Nop>
-nmap  <S-Tab>     <<_
-nmap  <silent>zm  zM
-nmap  <silent>zr  zR
-nmap  <Space>h    <C-w>h
-nmap  <Space>j    <C-w>j
-nmap  <Space>k    <C-w>k
-nmap  <Space>l    <C-w>l
-nmap  <Tab>       >>_
-nmap  <Up>        <Nop>
-" nmap  c#          ?\<<C-r>=expand('<cword>')<CR>\>\C<CR>``cgN
-" nmap  c*          /\<<C-r>=expand('<cword>')<CR>\>\C<CR>``cgn
-" nmap  d#          ?\<<C-r>=expand('<cword>')<CR>\>\C<CR>``dgN
-" nmap  d*          /\<<C-r>=expand('<cword>')<CR>\>\C<CR>``dgn
-nmap  gx          viW"ay:!open <C-R>a &<CR>
 nmap  H           ^
 nmap  J           <C-f>zz
 nmap  K           <C-b>zz
 nmap  L           $
+nmap  <C-h>       <C-w>h
+nmap  <C-j>       <C-w>j
+nmap  <C-k>       <C-w>k
+nmap  <C-l>       <C-w>l
+nmap  <Tab>       >>_
+nmap  <S-Tab>     <<_
+nmap  <silent>zm  zM
+nmap  <silent>zr  zR
+nmap  <Leader>s   :update<CR>:edit<CR>
 nmap  U           <C-R>
+nmap  gx          viW"ay:!open <C-R>a &<CR>
 nmap  zm          zM
 nmap  zr          zR
+" nmap  c#          ?\<<C-r>=expand('<cword>')<CR>\>\C<CR>``cgN
+" nmap  c*          /\<<C-r>=expand('<cword>')<CR>\>\C<CR>``cgn
+" nmap  d#          ?\<<C-r>=expand('<cword>')<CR>\>\C<CR>``dgN
+" nmap  d*          /\<<C-r>=expand('<cword>')<CR>\>\C<CR>``dgn
 " nmap  *           m`:keepjumps normal! *``<CR>
 " nmap  N           Nzzzv
 " nmap  n           nzzzv
 
-vmap  /           y/\V<C-R>=escape(@",'/\')<CR><CR>N
 vmap  <Leader>s   :update<CR>:edit<CR>
 vmap  <S-Tab>     <gv
 vmap  <Tab>       >gv
+vmap  /           y/\V<C-R>=escape(@",'/\')<CR><CR>N
 vmap  J           :m '>+1<CR>gv
 vmap  K           :m '<-2<CR>gv
 vmap  Y           "+ygv<Esc>
@@ -161,8 +161,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| endif
 call plug#begin('~/.vim/plugged')
   " '<,'>sort /^[^/]*/
-  Plug 'tmhedberg/SimpylFold' |
-    \ Plug 'Konfekt/FastFold'
+  Plug 'tmhedberg/SimpylFold'
   Plug 'neoclide/coc.nvim', {'branch': 'release'} |
     \ Plug 'antoinemadec/coc-fzf'
   Plug 'junegunn/fzf', {'do': { -> fzf#install() } } |
@@ -180,7 +179,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'chriskempson/base16-vim'
   Plug 'cocopon/iceberg.vim'
   Plug 'ekalinin/Dockerfile.vim'
-  " Plug 'haya14busa/is.vim'
   Plug 'hrsh7th/vim-eft'
   Plug 'itchyny/lightline.vim'
   Plug 'itchyny/vim-gitbranch'
@@ -200,6 +198,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'voldikss/vim-floaterm'
   Plug 'yggdroot/indentline'
   Plug 'osyo-manga/vim-anzu'
+  Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
+  Plug 'github/copilot.vim'
 call plug#end()
 
 
